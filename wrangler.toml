@@ -1,0 +1,15 @@
+#:schema https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json
+name = "paradox-website"
+pages_build_output_dir = "/"
+
+# Compatibility flags for modern features
+compatibility_date = "2025-05-19"
+
+# ── Environment Variables ──────────────────────────
+# [vars]
+# SITE_NAME = "Paradox.cat"
+
+# ── Pages-specific config ──────────────────────────
+# Deployment via `npx wrangler pages deploy .`
+# Or connect repo via Cloudflare Dashboard → Pages
+# Route all requests to index.html (SPA fallback not needed — single page)

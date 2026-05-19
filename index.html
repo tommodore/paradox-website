@@ -1,0 +1,1826 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paradox.cat — Schrödinger's Cat &amp; Quantum Uncertainty</title>
+    <meta
+      name="description"
+      content="Explore the paradox of Schrödinger's Cat — the cat is both alive and dead until observed. An interactive bilingual journey into quantum uncertainty. | Explora la paradoxa del Gat de Schrödinger — el gat és viu i mort alhora fins que mires."
+    />
+    <meta
+      name="keywords"
+      content="Schrödinger's cat, quantum paradox, quantum mechanics, superposition, paradox.cat, Catalan, English, interactive experiment, uncertainty"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Paradox.cat" />
+    <meta name="theme-color" content="#0b0b12" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://paradox.cat/" />
+
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="en" href="https://paradox.cat/" />
+    <link rel="alternate" hreflang="ca" href="https://paradox.cat/?lang=ca" />
+    <link rel="alternate" hreflang="x-default" href="https://paradox.cat/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://paradox.cat/" />
+    <meta
+      property="og:title"
+      content="Paradox.cat — The Cat Is Both Alive and Dead"
+    />
+    <meta
+      property="og:description"
+      content="An interactive bilingual journey into quantum uncertainty and Schrödinger's Cat. The cat is both alive and dead until you look."
+    />
+    <meta property="og:site_name" content="Paradox.cat" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ca_ES" />
+    <!-- ⚠️ Replace with a proper 1200x630 PNG for full social platform compatibility -->
+    <meta property="og:image" content="https://paradox.cat/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://paradox.cat/" />
+    <meta
+      name="twitter:title"
+      content="Paradox.cat — The Cat Is Both Alive and Dead"
+    />
+    <meta
+      name="twitter:description"
+      content="An interactive bilingual journey into quantum uncertainty and Schrödinger's Cat."
+    />
+    <meta name="twitter:image" content="https://paradox.cat/og-image.svg" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Paradox.cat",
+        "url": "https://paradox.cat/",
+        "description": "An interactive bilingual landing page exploring Schrödinger's Cat and quantum uncertainty.",
+        "inLanguage": ["en", "ca"],
+        "author": {
+          "@type": "Organization",
+          "name": "Paradox.cat"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Schrödinger's Cat",
+          "description": "A thought experiment in quantum superposition where a cat is simultaneously alive and dead until observed."
+        }
+      }
+    </script>
+
+    <!-- Preconnect to CDNs -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts: Playfair Display + Inter -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      />
+    </noscript>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* ===== Base & Variables ===== */
+      :root {
+        --bg-deep: #0b0b12;
+        --cyan: #67e8f9;
+        --purple: #6366f1;
+        --cyan-glow: rgba(103, 232, 249, 0.15);
+        --purple-glow: rgba(99, 102, 241, 0.15);
+        --glass-bg: rgba(11, 11, 18, 0.6);
+        --glass-border: rgba(103, 232, 249, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background-color: var(--bg-deep);
+        color: #e2e8f0;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .serif {
+        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      }
+
+      /* ===== Particle Canvas ===== */
+      #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ===== Sections ===== */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ===== Glassmorphism Card ===== */
+      .glass {
+        background: var(--glass-bg);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--glass-border);
+        border-radius: 1rem;
+      }
+
+      .glass-light {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(103, 232, 249, 0.08);
+        border-radius: 1rem;
+      }
+
+      /* ===== Glow effects ===== */
+      .glow-cyan {
+        box-shadow:
+          0 0 40px var(--cyan-glow),
+          0 0 80px var(--cyan-glow);
+      }
+      .glow-purple {
+        box-shadow:
+          0 0 40px var(--purple-glow),
+          0 0 80px var(--purple-glow);
+      }
+      .text-glow-cyan {
+        text-shadow:
+          0 0 20px rgba(103, 232, 249, 0.3),
+          0 0 40px rgba(103, 232, 249, 0.1);
+      }
+      .text-glow-purple {
+        text-shadow:
+          0 0 20px rgba(99, 102, 241, 0.3),
+          0 0 40px rgba(99, 102, 241, 0.1);
+      }
+
+      /* ===== Quantum Box ===== */
+      #quantum-box {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        margin: 0 auto;
+        border-radius: 1rem;
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.08),
+          rgba(103, 232, 249, 0.08)
+        );
+        border: 2px solid rgba(103, 232, 249, 0.2);
+        overflow: hidden;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      #quantum-box:hover {
+        border-color: rgba(103, 232, 249, 0.4);
+      }
+      #quantum-box::before {
+        content: "";
+        position: absolute;
+        inset: -50%;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          rgba(103, 232, 249, 0.06),
+          transparent,
+          rgba(99, 102, 241, 0.06),
+          transparent
+        );
+        animation: rotate-glow 8s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes rotate-glow {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      #cat-silhouette {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        font-size: 120px;
+        opacity: 0.6;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      #cat-silhouette.flicker {
+        animation: flicker 0.15s ease-in-out 6;
+      }
+      @keyframes flicker {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.15;
+          transform: scale(0.95);
+        }
+      }
+
+      .quantum-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 50% 50%,
+          transparent 30%,
+          rgba(11, 11, 18, 0.4) 100%
+        );
+      }
+
+      /* ===== Box lid animation ===== */
+      .box-lid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(
+          to bottom,
+          rgba(11, 11, 18, 0.95),
+          transparent
+        );
+        z-index: 3;
+        pointer-events: none;
+        transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-origin: top center;
+      }
+      .box-lid.open {
+        transform: translateY(-110%) rotateX(15deg);
+      }
+
+      /* ===== Observe button ===== */
+      .observe-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s;
+        background: linear-gradient(135deg, var(--cyan), var(--purple));
+        color: #0b0b12;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+      }
+      .observe-btn:hover {
+        transform: scale(1.05);
+        box-shadow:
+          0 0 30px rgba(103, 232, 249, 0.3),
+          0 0 60px rgba(99, 102, 241, 0.2);
+      }
+      .observe-btn:active {
+        transform: scale(0.98);
+      }
+
+      /* ===== Result Flash ===== */
+      .flash-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .flash-overlay.active {
+        opacity: 1;
+      }
+      .flash-overlay.alive {
+        background: radial-gradient(
+          circle at center,
+          rgba(103, 232, 249, 0.15),
+          transparent 70%
+        );
+      }
+      .flash-overlay.dead {
+        background: radial-gradient(
+          circle at center,
+          rgba(99, 102, 241, 0.15),
+          transparent 70%
+        );
+      }
+
+      /* ===== Paradox Cards ===== */
+      .paradox-card {
+        transition: all 0.3s;
+      }
+      .paradox-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(103, 232, 249, 0.3);
+        box-shadow: 0 12px 40px rgba(103, 232, 249, 0.08);
+      }
+
+      /* ===== Fade-in animations ===== */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== Cookie Banner ===== */
+      #cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        background: rgba(11, 11, 18, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(103, 232, 249, 0.1);
+        padding: 1rem 1.5rem;
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      #cookie-banner.show {
+        transform: translateY(0);
+      }
+      .cookie-btn {
+        transition: all 0.2s;
+        font-weight: 500;
+      }
+
+      /* ===== Language Toggle Pill ===== */
+      .lang-btn {
+        background: transparent;
+        border: 1px solid rgba(103, 232, 249, 0.2);
+        color: #94a3b8;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .lang-btn.active {
+        background: rgba(103, 232, 249, 0.15);
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+      .lang-btn:hover:not(.active) {
+        border-color: rgba(103, 232, 249, 0.4);
+        color: #e2e8f0;
+      }
+
+      /* ===== Navbar ===== */
+      #navbar {
+        transition:
+          background 0.3s,
+          backdrop-filter 0.3s;
+      }
+      #navbar.scrolled {
+        background: rgba(11, 11, 18, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 640px) {
+        #quantum-box {
+          width: 260px;
+          height: 260px;
+        }
+        #cat-silhouette {
+          font-size: 90px;
+        }
+        .hero-title {
+          font-size: 2rem !important;
+        }
+        .hero-sub {
+          font-size: 1rem !important;
+        }
+      }
+
+      /* ===== Selection ===== */
+      ::selection {
+        background: rgba(103, 232, 249, 0.3);
+        color: #fff;
+      }
+
+      /* ===== Scrollbar ===== */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-deep);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(103, 232, 249, 0.2);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(103, 232, 249, 0.4);
+      }
+
+      /* ===== Skip link for a11y ===== */
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        z-index: 300;
+        background: var(--cyan);
+        color: #0b0b12;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 1rem;
+      }
+
+      /* ===== Reduced motion ===== */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Skip Link (a11y) ===== -->
+    <a href="#hero" class="skip-link" data-i18n="skip_link"
+      >Skip to content | Saltar al contingut</a
+    >
+
+    <!-- ===== Flash Overlay ===== -->
+    <div id="flash-overlay" class="flash-overlay" aria-hidden="true"></div>
+
+    <!-- ===== Particle Canvas ===== -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <!-- ===== Cookie Consent Banner ===== -->
+    <div
+      id="cookie-banner"
+      role="dialog"
+      aria-label="Cookie Consent"
+      aria-describedby="cookie-text"
+      aria-modal="true"
+    >
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <div class="text-sm text-slate-300" id="cookie-text">
+          <p class="leading-relaxed" data-i18n="cookie_text">
+            🍪 We use minimal local storage only for your language preference.
+            No tracking cookies. By continuing, you consent to this.
+          </p>
+          <p
+            class="leading-relaxed"
+            data-i18n="cookie_text_ca"
+            style="display: none"
+          >
+            🍪 Utilitzem emmagatzematge local només per a la vostra preferència
+            d'idioma. Sense galetes de seguiment. En continuar, doneu el vostre
+            consentiment.
+          </p>
+          <a
+            href="#"
+            class="text-cyan-400 hover:text-cyan-300 underline text-xs"
+            data-i18n="cookie_privacy"
+            onclick="
+              event.preventDefault();
+              showPrivacyModal();
+            "
+            >Privacy Policy | Política de privadesa</a
+          >
+        </div>
+        <div class="flex gap-3 shrink-0">
+          <button
+            id="cookie-decline"
+            class="cookie-btn px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-white border border-slate-700 hover:border-slate-500"
+            data-i18n="cookie_decline"
+          >
+            Decline | Rebutjar
+          </button>
+          <button
+            id="cookie-accept"
+            class="cookie-btn px-5 py-2 rounded-lg text-sm font-semibold text-[#0b0b12] observe-btn"
+            data-i18n="cookie_accept"
+          >
+            Accept | Acceptar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Privacy Modal ===== -->
+    <div
+      id="privacy-modal"
+      class="fixed inset-0 z-[250] flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Privacy Policy"
+      style="display: none"
+    >
+      <div
+        class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        onclick="hidePrivacyModal()"
+      ></div>
+      <div
+        class="glass max-w-lg w-full p-6 sm:p-8 relative max-h-[80vh] overflow-y-auto"
+      >
+        <button
+          onclick="hidePrivacyModal()"
+          class="absolute top-3 right-3 text-slate-400 hover:text-white text-2xl"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl serif text-cyan-400 mb-4" data-i18n="privacy_title">
+          Privacy Policy | Política de privadesa
+        </h3>
+        <div class="text-sm text-slate-300 space-y-3">
+          <p data-i18n="privacy_p1">
+            <strong>Data Controller:</strong> Paradox.cat. No personal data is
+            collected, stored, or processed by this website.
+          </p>
+          <p data-i18n="privacy_p2">
+            <strong>Local Storage:</strong> We only store your language
+            preference (EN or CA) in your browser's local storage after you
+            explicitly consent. No cookies are used for tracking, analytics, or
+            advertising.
+          </p>
+          <p data-i18n="privacy_p3">
+            <strong>Third Parties:</strong> We load fonts from Google Fonts and
+            Tailwind CSS from a CDN. These services may log your IP address per
+            their own privacy policies.
+          </p>
+          <p data-i18n="privacy_p4">
+            <strong>Your Rights:</strong> Under GDPR, you have the right to
+            access, rectify, or erase any data. Since we store no personal data,
+            there is nothing to access or erase. You may clear your local
+            storage at any time via your browser settings.
+          </p>
+          <p data-i18n="privacy_p5">
+            <strong>Contact:</strong> privacy@paradox.cat
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Navbar ===== -->
+    <header
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3"
+    >
+      <nav
+        class="max-w-6xl mx-auto flex items-center justify-between"
+        aria-label="Main navigation"
+      >
+        <!-- Logo -->
+        <a
+          href="#hero"
+          class="text-lg serif font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+        >
+          paradox.cat
+        </a>
+
+        <!-- Nav right -->
+        <div class="flex items-center gap-3 sm:gap-6">
+          <!-- Language toggle -->
+          <div
+            class="flex gap-1"
+            role="radiogroup"
+            aria-label="Language selector"
+          >
+            <button
+              class="lang-btn active"
+              data-lang="en"
+              role="radio"
+              aria-checked="true"
+              aria-label="Switch to English"
+            >
+              EN
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="ca"
+              role="radio"
+              aria-checked="false"
+              aria-label="Canvia al català"
+            >
+              CA
+            </button>
+          </div>
+
+          <!-- Observe button -->
+          <a
+            href="#experiment"
+            class="observe-btn px-4 sm:px-5 py-2 rounded-full text-sm"
+            data-i18n="nav_observe"
+          >
+            Observe · Observa
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main id="main-content">
+      <!-- ===== HERO ===== -->
+      <section
+        id="hero"
+        class="min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-12 relative"
+      >
+        <div
+          class="text-center max-w-4xl mx-auto fade-in visible"
+          style="transition-delay: 0.1s"
+        >
+          <!-- English -->
+          <div data-lang-content="en">
+            <h1
+              class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold serif leading-tight mb-6 text-glow-cyan"
+              data-i18n="hero_title"
+            >
+              The cat is <span class="text-cyan-400">both alive</span> and
+              <span class="text-purple-400">dead</span>.
+            </h1>
+            <p
+              class="hero-sub text-xl sm:text-2xl md:text-3xl text-slate-400 serif italic mb-8"
+              data-i18n="hero_sub"
+            >
+              Until you look.
+            </p>
+          </div>
+          <!-- Catalan -->
+          <div data-lang-content="ca" style="display: none">
+            <h1
+              class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold serif leading-tight mb-6 text-glow-purple"
+              data-i18n="hero_title_ca"
+            >
+              El gat és <span class="text-cyan-400">viu</span> i
+              <span class="text-purple-400">mort</span> alhora.
+            </h1>
+            <p
+              class="hero-sub text-xl sm:text-2xl md:text-3xl text-slate-400 serif italic mb-8"
+              data-i18n="hero_sub_ca"
+            >
+              Fins que mires.
+            </p>
+          </div>
+
+          <p
+            class="text-slate-500 text-sm sm:text-base mb-12 max-w-2xl mx-auto leading-relaxed"
+            data-i18n="hero_tagline"
+          >
+            Schrödinger's Cat · Quantum Superposition · The Art of Uncertainty
+          </p>
+
+          <a
+            href="#experiment"
+            class="observe-btn px-8 py-3 rounded-full text-base sm:text-lg inline-block"
+          >
+            <span data-lang-content="en">Open the Box</span>
+            <span data-lang-content="ca" style="display: none"
+              >Obre la Caixa</span
+            >
+          </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div
+          class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce"
+          aria-hidden="true"
+        >
+          <svg
+            class="w-6 h-6 text-slate-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ===== THE PARADOX ===== -->
+      <section id="paradox" class="py-20 sm:py-28 px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Text -->
+            <div class="fade-in">
+              <h2 class="text-3xl sm:text-4xl serif font-bold mb-6">
+                <span data-lang-content="en" class="text-glow-cyan"
+                  >The Paradox</span
+                >
+                <span
+                  data-lang-content="ca"
+                  style="display: none"
+                  class="text-glow-purple"
+                  >La Paradoxa</span
+                >
+              </h2>
+              <!-- EN -->
+              <div data-lang-content="en">
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  In 1935, Erwin Schrödinger imagined a cat sealed inside a
+                  steel box with a tiny bit of radioactive substance, a Geiger
+                  counter, and a flask of poison.
+                </p>
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  If the radioactive atom decays, the Geiger counter triggers
+                  the flask to break, and the cat dies. If it does not decay,
+                  the cat lives. But until someone
+                  <span class="text-cyan-400 font-medium">observes</span> —
+                  until the box is opened — both realities exist simultaneously.
+                </p>
+                <p class="text-slate-400 leading-relaxed italic text-lg">
+                  The cat is neither alive nor dead. It is
+                  <span class="text-purple-400 not-italic font-semibold"
+                    >both</span
+                  >.
+                </p>
+              </div>
+              <!-- CA -->
+              <div data-lang-content="ca" style="display: none">
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  El 1935, Erwin Schrödinger va imaginar un gat tancat dins
+                  d'una caixa d'acer amb una petita quantitat de substància
+                  radioactiva, un comptador Geiger i un flascó de verí.
+                </p>
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  Si l'àtom radioactiu es desintegra, el comptador Geiger activa
+                  el flascó i el gat mor. Si no es desintegra, el gat viu. Però
+                  fins que algú
+                  <span class="text-cyan-400 font-medium">observa</span> — fins
+                  que la caixa s'obre — ambdues realitats existeixen
+                  simultàniament.
+                </p>
+                <p class="text-slate-400 leading-relaxed italic text-lg">
+                  El gat no és ni viu ni mort. És
+                  <span class="text-purple-400 not-italic font-semibold"
+                    >ambdós</span
+                  >.
+                </p>
+              </div>
+            </div>
+
+            <!-- Illustration: sealed box -->
+            <div
+              class="fade-in flex justify-center"
+              style="transition-delay: 0.2s"
+            >
+              <div class="relative w-72 h-72 sm:w-80 sm:h-80">
+                <!-- Sealed box SVG -->
+                <svg
+                  viewBox="0 0 320 320"
+                  class="w-full h-full"
+                  aria-hidden="true"
+                  role="img"
+                  aria-label="Illustration of Schrödinger's sealed box"
+                >
+                  <defs>
+                    <linearGradient id="box-grad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="rgba(103,232,249,0.15)" />
+                      <stop offset="100%" stop-color="rgba(99,102,241,0.15)" />
+                    </linearGradient>
+                    <linearGradient id="box-border" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#67e8f9" />
+                      <stop offset="100%" stop-color="#6366f1" />
+                    </linearGradient>
+                    <filter id="box-glow">
+                      <feGaussianBlur stdDeviation="12" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  <!-- Glow behind -->
+                  <ellipse
+                    cx="160"
+                    cy="200"
+                    rx="130"
+                    ry="50"
+                    fill="rgba(103,232,249,0.04)"
+                    filter="url(#box-glow)"
+                  />
+                  <!-- Box body -->
+                  <rect
+                    x="40"
+                    y="80"
+                    width="240"
+                    height="180"
+                    rx="12"
+                    fill="url(#box-grad)"
+                    stroke="url(#box-border)"
+                    stroke-width="1.5"
+                    filter="url(#box-glow)"
+                  />
+                  <!-- Box lid line -->
+                  <line
+                    x1="40"
+                    y1="120"
+                    x2="280"
+                    y2="120"
+                    stroke="rgba(103,232,249,0.3)"
+                    stroke-width="1"
+                    stroke-dasharray="6,4"
+                  />
+                  <!-- Cat silhouette inside -->
+                  <text
+                    x="160"
+                    y="190"
+                    text-anchor="middle"
+                    font-size="80"
+                    opacity="0.4"
+                    fill="#e2e8f0"
+                  >
+                    🐱
+                  </text>
+                  <!-- Question marks -->
+                  <text
+                    x="70"
+                    y="100"
+                    font-size="18"
+                    opacity="0.3"
+                    fill="#67e8f9"
+                  >
+                    ?
+                  </text>
+                  <text
+                    x="240"
+                    y="160"
+                    font-size="14"
+                    opacity="0.3"
+                    fill="#6366f1"
+                  >
+                    ?
+                  </text>
+                  <text
+                    x="55"
+                    y="210"
+                    font-size="12"
+                    opacity="0.2"
+                    fill="#67e8f9"
+                  >
+                    ?
+                  </text>
+                  <!-- Lock -->
+                  <circle
+                    cx="160"
+                    cy="120"
+                    r="8"
+                    fill="none"
+                    stroke="rgba(103,232,249,0.3)"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="156"
+                    y="112"
+                    width="8"
+                    height="6"
+                    rx="2"
+                    fill="rgba(103,232,249,0.15)"
+                    stroke="rgba(103,232,249,0.3)"
+                    stroke-width="1"
+                  />
+                  <!-- Box label -->
+                  <text
+                    x="160"
+                    y="290"
+                    text-anchor="middle"
+                    font-size="11"
+                    fill="rgba(103,232,249,0.3)"
+                    font-family="monospace"
+                  >
+                    SCHRÖDINGER'S BOX
+                  </text>
+                </svg>
+                <!-- Cyan/purple orbs floating -->
+                <div
+                  class="absolute top-4 right-2 w-3 h-3 rounded-full bg-cyan-400/30 animate-pulse"
+                  style="animation-duration: 3s"
+                ></div>
+                <div
+                  class="absolute bottom-8 left-4 w-2 h-2 rounded-full bg-purple-400/30 animate-pulse"
+                  style="animation-duration: 4s"
+                ></div>
+                <div
+                  class="absolute top-20 left-2 w-2 h-2 rounded-full bg-cyan-400/20 animate-pulse"
+                  style="animation-duration: 5s"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== THE EXPERIMENT ===== -->
+      <section id="experiment" class="py-20 sm:py-28 px-4 relative">
+        <!-- Background glow -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-[100px] pointer-events-none"
+          aria-hidden="true"
+        ></div>
+
+        <div class="max-w-4xl mx-auto text-center relative">
+          <div class="fade-in">
+            <h2 class="text-3xl sm:text-4xl serif font-bold mb-3">
+              <span data-lang-content="en" class="text-glow-cyan"
+                >The Experiment</span
+              >
+              <span
+                data-lang-content="ca"
+                style="display: none"
+                class="text-glow-purple"
+                >L'Experiment</span
+              >
+            </h2>
+            <p class="text-slate-400 mb-2 text-lg" data-lang-content="en">
+              The cat awaits your observation.
+            </p>
+            <p
+              class="text-slate-400 mb-2 text-lg"
+              data-lang-content="ca"
+              style="display: none"
+            >
+              El gat espera la teva observació.
+            </p>
+          </div>
+
+          <!-- Quantum Box -->
+          <div class="fade-in my-10" style="transition-delay: 0.15s">
+            <div
+              id="quantum-box"
+              role="img"
+              aria-label="Interactive quantum superposition box containing Schrödinger's cat"
+            >
+              <div class="box-lid" id="box-lid"></div>
+              <div id="cat-silhouette" class="flicker">🐱</div>
+              <div class="quantum-overlay"></div>
+              <!-- State labels -->
+              <div
+                class="absolute top-3 left-3 z-10 text-[10px] font-mono text-cyan-400/40"
+                data-lang-content="en"
+              >
+                ψ = |alive⟩ + |dead⟩
+              </div>
+              <div
+                class="absolute top-3 left-3 z-10 text-[10px] font-mono text-cyan-400/40"
+                data-lang-content="ca"
+                style="display: none"
+              >
+                ψ = |viu⟩ + |mort⟩
+              </div>
+              <div
+                class="absolute top-3 right-3 z-10 text-[10px] font-mono text-purple-400/40"
+              >
+                √2
+              </div>
+            </div>
+          </div>
+
+          <!-- Observe button -->
+          <div class="fade-in" style="transition-delay: 0.3s">
+            <button
+              id="observe-btn"
+              class="observe-btn px-10 py-4 rounded-full text-lg sm:text-xl"
+              aria-label="Observe the cat and collapse the quantum superposition"
+            >
+              <span data-lang-content="en">🔬 Observe</span>
+              <span data-lang-content="ca" style="display: none"
+                >🔬 Observa</span
+              >
+            </button>
+          </div>
+
+          <!-- Result -->
+          <div
+            id="result-container"
+            class="fade-in mt-10 min-h-[120px]"
+            style="transition-delay: 0.4s"
+          >
+            <div
+              id="result-text"
+              class="text-2xl sm:text-3xl serif font-semibold hidden"
+            ></div>
+            <div
+              id="result-sub"
+              class="text-slate-500 mt-2 text-sm hidden"
+            ></div>
+          </div>
+
+          <!-- Attempts counter -->
+          <div class="mt-6 text-xs text-slate-600 font-mono">
+            <span data-lang-content="en">Observations: </span>
+            <span data-lang-content="ca" style="display: none"
+              >Observacions:
+            </span>
+            <span id="attempt-count">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FAMOUS PARADOXES ===== -->
+      <section id="paradoxes" class="py-20 sm:py-28 px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 fade-in">
+            <h2 class="text-3xl sm:text-4xl serif font-bold mb-3">
+              <span data-lang-content="en" class="text-glow-cyan"
+                >Famous Paradoxes</span
+              >
+              <span
+                data-lang-content="ca"
+                style="display: none"
+                class="text-glow-purple"
+                >Paradoxes Cèlebres</span
+              >
+            </h2>
+            <p class="text-slate-400" data-lang-content="en">
+              Other thought experiments that challenge our perception of
+              reality.
+            </p>
+            <p
+              class="text-slate-400"
+              data-lang-content="ca"
+              style="display: none"
+            >
+              Altres experiments mentals que desafien la nostra percepció de la
+              realitat.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Card 1: Zeno's -->
+            <article
+              class="paradox-card glass-light p-6 fade-in"
+              style="transition-delay: 0.1s"
+            >
+              <div class="text-3xl mb-3">🏹</div>
+              <h3 class="serif text-lg font-semibold text-cyan-300 mb-2">
+                <span data-lang-content="en">Zeno's Arrow</span>
+                <span data-lang-content="ca" style="display: none"
+                  >La Fletxa de Zenó</span
+                >
+              </h3>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="en"
+              >
+                An arrow in flight is motionless at every instant. If time is
+                composed of instants, how does motion exist?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ca"
+                style="display: none"
+              >
+                Una fletxa en vol està immòbil a cada instant. Si el temps es
+                compon d'instants, com existeix el moviment?
+              </p>
+            </article>
+
+            <!-- Card 2: Fermi -->
+            <article
+              class="paradox-card glass-light p-6 fade-in"
+              style="transition-delay: 0.2s"
+            >
+              <div class="text-3xl mb-3">🌌</div>
+              <h3 class="serif text-lg font-semibold text-cyan-300 mb-2">
+                <span data-lang-content="en">Fermi's Paradox</span>
+                <span data-lang-content="ca" style="display: none"
+                  >La Paradoxa de Fermi</span
+                >
+              </h3>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="en"
+              >
+                The universe is vast and ancient. The probability of
+                extraterrestrial life is high — yet we see no evidence. Where is
+                everyone?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ca"
+                style="display: none"
+              >
+                L'univers és vast i antic. La probabilitat de vida
+                extraterrestre és alta — però no veiem cap evidència. On són
+                tots?
+              </p>
+            </article>
+
+            <!-- Card 3: Ship of Theseus -->
+            <article
+              class="paradox-card glass-light p-6 fade-in"
+              style="transition-delay: 0.3s"
+            >
+              <div class="text-3xl mb-3">⛵</div>
+              <h3 class="serif text-lg font-semibold text-cyan-300 mb-2">
+                <span data-lang-content="en">Ship of Theseus</span>
+                <span data-lang-content="ca" style="display: none"
+                  >El Vaixell de Teseu</span
+                >
+              </h3>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="en"
+              >
+                If every plank of a ship is replaced over time, is it still the
+                same ship? At what point does identity change?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ca"
+                style="display: none"
+              >
+                Si cada taula d'un vaixell es substitueix amb el temps, segueix
+                sent el mateix vaixell? En quin punt canvia la identitat?
+              </p>
+            </article>
+
+            <!-- Card 4: Grandfather -->
+            <article
+              class="paradox-card glass-light p-6 fade-in"
+              style="transition-delay: 0.4s"
+            >
+              <div class="text-3xl mb-3">⏳</div>
+              <h3 class="serif text-lg font-semibold text-cyan-300 mb-2">
+                <span data-lang-content="en">Grandfather Paradox</span>
+                <span data-lang-content="ca" style="display: none"
+                  >La Paradoxa de l'Avi</span
+                >
+              </h3>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="en"
+              >
+                If you travel back in time and prevent your grandfather from
+                meeting your grandmother, how could you ever have been born?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ca"
+                style="display: none"
+              >
+                Si viatges enrere en el temps i evites que el teu avi conegui la
+                teva àvia, com podries haver nascut mai?
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== REFLECTIONS ===== -->
+      <section id="reflections" class="py-20 sm:py-28 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="fade-in">
+            <h2 class="text-3xl sm:text-4xl serif font-bold mb-3">
+              <span data-lang-content="en" class="text-glow-cyan"
+                >Reflections</span
+              >
+              <span
+                data-lang-content="ca"
+                style="display: none"
+                class="text-glow-purple"
+                >Reflexions</span
+              >
+            </h2>
+            <p class="text-slate-400 mb-12" data-lang-content="en">
+              On uncertainty, observation, and the nature of reality.
+            </p>
+            <p
+              class="text-slate-400 mb-12"
+              data-lang-content="ca"
+              style="display: none"
+            >
+              Sobre la incertesa, l'observació i la naturalesa de la realitat.
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Reflection 1 -->
+            <div
+              class="glass p-6 sm:p-8 fade-in"
+              style="transition-delay: 0.1s"
+            >
+              <p
+                class="text-lg sm:text-xl serif italic leading-relaxed text-slate-200"
+              >
+                <span data-lang-content="en"
+                  >"The universe does not exist 'out there' independent of us.
+                  We are inescapably a part of the reality we observe."</span
+                >
+                <span data-lang-content="ca" style="display: none"
+                  >"L'univers no existeix 'allà fora' independent de nosaltres.
+                  Som inevitablement part de la realitat que observem."</span
+                >
+              </p>
+              <p class="text-xs text-slate-600 mt-4">
+                — John Archibald Wheeler
+              </p>
+            </div>
+
+            <!-- Reflection 2 -->
+            <div
+              class="glass p-6 sm:p-8 fade-in"
+              style="transition-delay: 0.2s"
+            >
+              <p
+                class="text-lg sm:text-xl serif italic leading-relaxed text-slate-200"
+              >
+                <span data-lang-content="en"
+                  >"The quantum world is not strange. What is strange is that we
+                  expected it to behave like ours."</span
+                >
+                <span data-lang-content="ca" style="display: none"
+                  >"El món quàntic no és estrany. L'estrany és que esperàvem que
+                  es comportés com el nostre."</span
+                >
+              </p>
+              <p class="text-xs text-slate-600 mt-4">— Carlo Rovelli</p>
+            </div>
+
+            <!-- Reflection 3 -->
+            <div
+              class="glass p-6 sm:p-8 fade-in"
+              style="transition-delay: 0.3s"
+            >
+              <p
+                class="text-lg sm:text-xl serif italic leading-relaxed text-slate-200"
+              >
+                <span data-lang-content="en"
+                  >"Every observation is a choice. Every choice collapses a
+                  world of possibilities into one."</span
+                >
+                <span data-lang-content="ca" style="display: none"
+                  >"Cada observació és una elecció. Cada elecció col·lapsa un
+                  món de possibilitats en una."</span
+                >
+              </p>
+              <p class="text-xs text-slate-600 mt-4">— Paradox.cat</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="border-t border-slate-800/60 py-10 px-4 relative z-10">
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500"
+      >
+        <div>
+          <p class="text-slate-600">
+            © <span id="year">2026</span> Paradox.cat
+          </p>
+        </div>
+        <div class="text-center sm:text-right">
+          <p data-lang-content="en">
+            This page exists in
+            <span class="text-cyan-400/60">English</span> and
+            <span class="text-purple-400/60">Català</span>. Both are equally
+            real until observed.
+          </p>
+          <p data-lang-content="ca" style="display: none">
+            Aquesta pàgina existeix en
+            <span class="text-cyan-400/60">Anglès</span> i
+            <span class="text-purple-400/60">Català</span>. Ambdues són
+            igualment reals fins que s'observen.
+          </p>
+          <button
+            onclick="showPrivacyModal()"
+            class="text-slate-600 hover:text-cyan-400 underline underline-offset-2 mt-1 text-xs"
+          >
+            Privacy Policy
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+      (function () {
+        "use strict";
+
+        /* ============================================
+         LANGUAGE SYSTEM
+         ============================================ */
+        let currentLang = localStorage.getItem("paradox-lang") || "en";
+        const langBtns = document.querySelectorAll(".lang-btn");
+        const langContentMap = {};
+
+        // Build content map from data-lang-content
+        document.querySelectorAll("[data-lang-content]").forEach((el) => {
+          const lang = el.getAttribute("data-lang-content");
+          if (!langContentMap[lang]) langContentMap[lang] = [];
+          langContentMap[lang].push(el);
+        });
+
+        // Also handle i18n elements that have different text per language
+        const i18nElements = {};
+
+        function setLanguage(lang) {
+          if (lang !== "en" && lang !== "ca") return;
+          currentLang = lang;
+
+          // Update HTML lang attribute
+          document.documentElement.lang = lang;
+          document.documentElement.dataset.lang = lang;
+
+          // Show/hide data-lang-content blocks
+          Object.keys(langContentMap).forEach((l) => {
+            const display = l === lang ? "" : "none";
+            langContentMap[l].forEach((el) => {
+              el.style.display = display;
+            });
+          });
+
+          // Update lang buttons
+          langBtns.forEach((btn) => {
+            const isActive = btn.dataset.lang === lang;
+            btn.classList.toggle("active", isActive);
+            btn.setAttribute("aria-checked", isActive);
+          });
+
+          // Update i18n elements that have bilingual text as content
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.dataset.i18n;
+            // These are handled via inline content already
+          });
+        }
+
+        // Lang button click handlers
+        langBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const lang = this.dataset.lang;
+            if (lang !== currentLang) {
+              setLanguage(lang);
+              // Only save after cookie consent
+              if (window.cookieConsented) {
+                try {
+                  localStorage.setItem("paradox-lang", lang);
+                } catch (e) {}
+              }
+            }
+          });
+        });
+
+        // Expose setLanguage globally
+        window.setLanguage = setLanguage;
+
+        /* ============================================
+         COOKIE CONSENT (GDPR)
+         ============================================ */
+        const cookieBanner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("cookie-accept");
+        const declineBtn = document.getElementById("cookie-decline");
+        window.cookieConsented = false;
+
+        function showCookieBanner() {
+          cookieBanner.classList.add("show");
+        }
+
+        function hideCookieBanner() {
+          cookieBanner.classList.remove("show");
+        }
+
+        function acceptCookies() {
+          window.cookieConsented = true;
+          try {
+            localStorage.setItem("paradox-consent", "true");
+            localStorage.setItem("paradox-lang", currentLang);
+          } catch (e) {}
+          hideCookieBanner();
+        }
+
+        function declineCookies() {
+          window.cookieConsented = false;
+          try {
+            localStorage.setItem("paradox-consent", "false");
+            // Clear any stored preference
+            localStorage.removeItem("paradox-lang");
+          } catch (e) {}
+          hideCookieBanner();
+        }
+
+        acceptBtn.addEventListener("click", acceptCookies);
+        declineBtn.addEventListener("click", declineCookies);
+
+        // Check existing consent
+        const existingConsent = (function () {
+          try {
+            return localStorage.getItem("paradox-consent");
+          } catch (e) {
+            return null;
+          }
+        })();
+
+        if (existingConsent === "true") {
+          window.cookieConsented = true;
+          // Restore language preference
+          const savedLang = (function () {
+            try {
+              return localStorage.getItem("paradox-lang");
+            } catch (e) {
+              return null;
+            }
+          })();
+          if (savedLang && (savedLang === "en" || savedLang === "ca")) {
+            setLanguage(savedLang);
+          }
+          // Banner stays hidden
+        } else if (existingConsent === "false") {
+          // User declined, keep default language
+          setLanguage("en");
+          // Banner stays hidden
+        } else {
+          // First visit — show banner after a short delay
+          setLanguage("en");
+          setTimeout(showCookieBanner, 800);
+        }
+
+        /* ============================================
+         PRIVACY MODAL
+         ============================================ */
+        window.showPrivacyModal = function () {
+          document.getElementById("privacy-modal").style.display = "flex";
+          document.body.style.overflow = "hidden";
+        };
+        window.hidePrivacyModal = function () {
+          document.getElementById("privacy-modal").style.display = "none";
+          document.body.style.overflow = "";
+        };
+        document
+          .getElementById("privacy-modal")
+          .addEventListener("click", function (e) {
+            if (e.target === this) hidePrivacyModal();
+          });
+
+        /* ============================================
+         PARTICLE SYSTEM
+         ============================================ */
+        const canvas = document.getElementById("particle-canvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+        let mouseX = 0,
+          mouseY = 0;
+        let animationId;
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        function createParticles(count) {
+          particles = [];
+          for (let i = 0; i < count; i++) {
+            particles.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              vx: (Math.random() - 0.5) * 0.4,
+              vy: (Math.random() - 0.5) * 0.4,
+              size: Math.random() * 2.5 + 0.5,
+              opacity: Math.random() * 0.4 + 0.1,
+              hue: Math.random() > 0.5 ? 185 : 245, // cyan or purple
+            });
+          }
+        }
+
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Draw connections nearby
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 120) {
+                const alpha = (1 - dist / 120) * 0.08;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(103, 232, 249, ${alpha})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Draw particles
+          for (const p of particles) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            const color =
+              p.hue === 185
+                ? `rgba(103, 232, 249, ${p.opacity})`
+                : `rgba(99, 102, 241, ${p.opacity})`;
+            ctx.fillStyle = color;
+            ctx.fill();
+
+            // Soft glow
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+            ctx.fillStyle =
+              p.hue === 185
+                ? `rgba(103, 232, 249, ${p.opacity * 0.08})`
+                : `rgba(99, 102, 241, ${p.opacity * 0.08})`;
+            ctx.fill();
+          }
+        }
+
+        function updateParticles() {
+          for (const p of particles) {
+            // Mouse influence
+            const dx = mouseX - p.x;
+            const dy = mouseY - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150) {
+              const force = (1 - dist / 150) * 0.02;
+              p.vx += dx * force;
+              p.vy += dy * force;
+            }
+
+            // Damping
+            p.vx *= 0.98;
+            p.vy *= 0.98;
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Wrap around
+            if (p.x < -10) p.x = canvas.width + 10;
+            if (p.x > canvas.width + 10) p.x = -10;
+            if (p.y < -10) p.y = canvas.height + 10;
+            if (p.y > canvas.height + 10) p.y = -10;
+          }
+        }
+
+        function animateParticles() {
+          updateParticles();
+          drawParticles();
+          animationId = requestAnimationFrame(animateParticles);
+        }
+
+        function initParticles() {
+          resizeCanvas();
+          createParticles(80);
+          animateParticles();
+        }
+
+        window.addEventListener("resize", () => {
+          resizeCanvas();
+          createParticles(80);
+        });
+
+        document.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        document.addEventListener("touchmove", (e) => {
+          const touch = e.touches[0];
+          if (touch) {
+            mouseX = touch.clientX;
+            mouseY = touch.clientY;
+          }
+        });
+
+        // Start particles (respect reduced motion)
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (!prefersReducedMotion) {
+          initParticles();
+        }
+
+        /* ============================================
+         SCROLL FADE-IN
+         ============================================ */
+        const fadeElements = document.querySelectorAll(".fade-in");
+
+        function checkFadeElements() {
+          const windowHeight = window.innerHeight;
+          fadeElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < windowHeight * 0.85) {
+              el.classList.add("visible");
+            }
+          });
+        }
+
+        // Check on load and scroll
+        checkFadeElements();
+        window.addEventListener("scroll", checkFadeElements);
+        window.addEventListener("resize", checkFadeElements);
+
+        /* ============================================
+         NAVBAR SCROLL EFFECT
+         ============================================ */
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+
+        /* ============================================
+         INTERACTIVE EXPERIMENT
+         ============================================ */
+        const observeBtn = document.getElementById("observe-btn");
+        const catSilhouette = document.getElementById("cat-silhouette");
+        const boxLid = document.getElementById("box-lid");
+        const resultText = document.getElementById("result-text");
+        const resultSub = document.getElementById("result-sub");
+        const resultContainer = document.getElementById("result-container");
+        const flashOverlay = document.getElementById("flash-overlay");
+        const attemptSpan = document.getElementById("attempt-count");
+        let attempts = 0;
+        let isObserving = false;
+
+        const aliveMessages = {
+          en: {
+            text: 'The cat is <span class="text-cyan-400">alive</span>.',
+            sub: "Today, the universe chose life.",
+          },
+          ca: {
+            text: 'El gat és <span class="text-cyan-400">viu</span>.',
+            sub: "Avui, l'univers ha escollit la vida.",
+          },
+        };
+        const deadMessages = {
+          en: {
+            text: 'The cat is <span class="text-purple-400">dead</span>.',
+            sub: "The wave function has collapsed.",
+          },
+          ca: {
+            text: 'El gat és <span class="text-purple-400">mort</span>.',
+            sub: "La funció d'ona ha col·lapsat.",
+          },
+        };
+
+        // English versions only — Catalan is also stored
+        const resultMessages = {
+          alive: aliveMessages,
+          dead: deadMessages,
+        };
+
+        function observe() {
+          if (isObserving) return;
+          isObserving = true;
+          observeBtn.disabled = true;
+          observeBtn.style.opacity = "0.5";
+          resultText.classList.add("hidden");
+
+          // Flicker cat
+          catSilhouette.classList.remove("flicker");
+          void catSilhouette.offsetWidth; // reflow
+          catSilhouette.classList.add("flicker");
+
+          // Close lid first if open
+          boxLid.classList.remove("open");
+
+          setTimeout(() => {
+            // Random outcome
+            const outcome = Math.random() < 0.5 ? "alive" : "dead";
+            attempts++;
+            attemptSpan.textContent = attempts;
+
+            // Update cat
+            catSilhouette.textContent = outcome === "alive" ? "😺" : "😿";
+            catSilhouette.classList.remove("flicker");
+            catSilhouette.style.opacity = "1";
+
+            // Flash
+            flashOverlay.className = "flash-overlay active " + outcome;
+            setTimeout(() => {
+              flashOverlay.classList.remove("active");
+            }, 500);
+
+            // Show result
+            const msgs = resultMessages[outcome];
+            const lang = currentLang;
+            const msg = msgs[lang] || msgs.en;
+            resultText.innerHTML = msg.text;
+            resultText.className =
+              "text-2xl sm:text-3xl serif font-semibold fade-in visible";
+            resultSub.textContent = msg.sub;
+            resultSub.className = "text-slate-500 mt-2 text-sm fade-in visible";
+
+            // Open the lid
+            setTimeout(() => {
+              boxLid.classList.add("open");
+            }, 200);
+
+            // Reset after delay
+            setTimeout(() => {
+              // Reset cat
+              catSilhouette.textContent = "🐱";
+              catSilhouette.style.opacity = "0.6";
+
+              observeBtn.disabled = false;
+              observeBtn.style.opacity = "1";
+              isObserving = false;
+            }, 3000);
+          }, 800);
+        }
+
+        observeBtn.addEventListener("click", observe);
+
+        // Keyboard: Enter/Space on button
+        observeBtn.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            observe();
+          }
+        });
+
+        /* ============================================
+         FOOTER YEAR
+         ============================================ */
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        /* ============================================
+         URL-BASED LANGUAGE DETECTION (hreflang support)
+         ============================================ */
+        // If ?lang=ca in URL, switch to Catalan
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get("lang");
+        if (urlLang === "ca") {
+          setLanguage("ca");
+        } else if (!existingConsent) {
+          // First visit: detect browser language
+          const browserLang =
+            navigator.language || navigator.userLanguage || "";
+          if (browserLang.startsWith("ca") || browserLang === "ca-ES") {
+            setLanguage("ca");
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

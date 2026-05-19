@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects
+# https://developers.cloudflare.com/pages/platform/redirects/
+
+# Language redirect (optional: redirect based on Accept-Language)
+# No permanent redirects needed for a single-page site
+
+# 404 fallback
+/* /index.html 404

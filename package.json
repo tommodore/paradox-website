@@ -1,0 +1,14 @@
+{
+  "name": "paradox-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "paradox.cat — Schrödinger's Cat bilingual landing page",
+  "scripts": {
+    "build:css": "tailwindcss --input input.css --output styles.css --scan index.html",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.3.0",
+    "@tailwindcss/cli": "^4.3.0"
+  }
+}

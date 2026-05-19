@@ -77,30 +77,14 @@
       }
     </script>
 
-    <!-- Preconnect to CDNs -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Self-hosted Tailwind CSS (no CDN — DSGVO compliant) -->
+    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Google Fonts: Playfair Display + Inter -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
-      as="style"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
-      />
-    </noscript>
-
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Self-hosted Inter font (no Google Fonts — DSGVO compliant) -->
+    <link rel="preload" href="/fonts/Inter-400.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Inter-600.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Inter-300.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Inter-500.ttf" as="font" type="font/ttf" crossorigin />
 
     <style>
       /* ===== Base & Variables ===== */
@@ -112,6 +96,36 @@
         --purple-glow: rgba(99, 102, 241, 0.15);
         --glass-bg: rgba(11, 11, 18, 0.6);
         --glass-border: rgba(103, 232, 249, 0.12);
+      }
+
+      /* ===== Self-hosted Inter (DSGVO compliant — no Google Fonts) ===== */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url('/fonts/Inter-300.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/Inter-400.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/Inter-500.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/Inter-600.ttf') format('truetype');
       }
 
       * {
@@ -137,9 +151,13 @@
       h1,
       h2,
       h3,
-      h4,
+      h4 {
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
       .serif {
-        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+        font-style: italic;
       }
 
       /* ===== Particle Canvas ===== */
@@ -524,17 +542,20 @@
       >
         <div class="text-sm text-slate-300" id="cookie-text">
           <p class="leading-relaxed" data-i18n="cookie_text">
-            🍪 We use minimal local storage only for your language preference.
-            No tracking cookies. By continuing, you consent to this.
+            🍪 This website stores only your language preference in local storage.
+            No cookies, no tracking, no third-party services. All resources are
+            self-hosted — no data is sent to Google, CDNs, or analytics services.
+            By accepting, you consent to local storage for your language choice.
           </p>
           <p
             class="leading-relaxed"
             data-i18n="cookie_text_ca"
             style="display: none"
           >
-            🍪 Utilitzem emmagatzematge local només per a la vostra preferència
-            d'idioma. Sense galetes de seguiment. En continuar, doneu el vostre
-            consentiment.
+            🍪 Aquest lloc web emmagatzema només la vostra preferència d'idioma
+            a l'emmagatzematge local. Sense galetes, sense seguiment, sense
+            serveis externs. Tots els recursos s'allotgen al nostre propi servidor
+            — no s'envien dades a Google, CDNs o serveis d'anàlisi.
           </p>
           <a
             href="#"
@@ -604,18 +625,21 @@
             advertising.
           </p>
           <p data-i18n="privacy_p3">
-            <strong>Third Parties:</strong> We load fonts from Google Fonts and
-            Tailwind CSS from a CDN. These services may log your IP address per
-            their own privacy policies.
+            <strong>Third Parties:</strong> This website does not load any external
+            resources. Fonts, styles, and scripts are self-hosted on our own server
+            (Cloudflare). No data is transmitted to third parties for fonts, analytics,
+            or tracking purposes.
           </p>
           <p data-i18n="privacy_p4">
-            <strong>Your Rights:</strong> Under GDPR, you have the right to
-            access, rectify, or erase any data. Since we store no personal data,
-            there is nothing to access or erase. You may clear your local
-            storage at any time via your browser settings.
+            <strong>Your Rights (DSGVO):</strong> Under the EU General Data
+            Protection Regulation (DSGVO), you have the right to access, rectify,
+            or erase any personal data. Since we store no personal data, there is
+            nothing to access or erase. You may clear your local storage at any
+            time via your browser settings. This website is hosted on Cloudflare
+            (European privacy framework).
           </p>
           <p data-i18n="privacy_p5">
-            <strong>Contact:</strong> privacy@paradox.cat
+            <strong>Contact / Kontakt:</strong> privacy@paradox.cat
           </p>
         </div>
       </div>

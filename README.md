@@ -18,12 +18,12 @@ A single-page, bilingual (English / Catalan) landing page exploring Schrödinger
 
 ## Tech Stack
 
-| Tech | Purpose |
-|---|---|
-| Vanilla HTML / CSS / JS | Zero framework, no build step |
-| [Tailwind CSS](https://tailwindcss.com/) (CDN) | Utility-first styling |
+| Tech                                                                                                                      | Purpose                          |
+| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Vanilla HTML / CSS / JS                                                                                                   | Zero framework, no build step    |
+| [Tailwind CSS](https://tailwindcss.com/) (CDN)                                                                            | Utility-first styling            |
 | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) + [Inter](https://fonts.google.com/specimen/Inter) | Serif headings + sans-serif body |
-| Cloudflare Pages | Deployment & CDN |
+| Cloudflare Pages                                                                                                          | Deployment & CDN                 |
 
 ## Features
 

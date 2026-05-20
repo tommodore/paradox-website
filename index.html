@@ -6,7 +6,7 @@
     <title>Paradox.cat — Schrödinger's Cat &amp; Quantum Uncertainty</title>
     <meta
       name="description"
-      content="Explore the paradox of Schrödinger's Cat — the cat is both alive and dead until observed. An interactive bilingual journey into quantum uncertainty. | Explora la paradoxa del Gat de Schrödinger — el gat és viu i mort alhora fins que mires."
+      content="Explore the paradox of Schrödinger's Cat — the cat is both alive and dead until observed. An interactive multilingual journey into quantum uncertainty."
     />
     <meta
       name="keywords"
@@ -22,6 +22,8 @@
     <!-- Alternate languages -->
     <link rel="alternate" hreflang="en" href="https://paradox.cat/" />
     <link rel="alternate" hreflang="ca" href="https://paradox.cat/?lang=ca" />
+    <link rel="alternate" hreflang="de" href="https://paradox.cat/?lang=de" />
+    <link rel="alternate" hreflang="ja" href="https://paradox.cat/?lang=ja" />
     <link rel="alternate" hreflang="x-default" href="https://paradox.cat/" />
 
     <!-- Open Graph -->
@@ -38,6 +40,8 @@
     <meta property="og:site_name" content="Paradox.cat" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ca_ES" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="ja_JP" />
     <!-- ⚠️ Replace with a proper 1200x630 PNG for full social platform compatibility -->
     <meta property="og:image" content="https://paradox.cat/og-image.svg" />
     <meta property="og:image:width" content="1200" />
@@ -64,7 +68,7 @@
         "name": "Paradox.cat",
         "url": "https://paradox.cat/",
         "description": "An interactive bilingual landing page exploring Schrödinger's Cat and quantum uncertainty.",
-        "inLanguage": ["en", "ca"],
+        "inLanguage": ["en", "ca", "de", "ja"],
         "author": {
           "@type": "Organization",
           "name": "Paradox.cat"
@@ -81,10 +85,34 @@
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Self-hosted Inter font (no Google Fonts — DSGVO compliant) -->
-    <link rel="preload" href="/fonts/Inter-400.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/Inter-600.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/Inter-300.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/Inter-500.ttf" as="font" type="font/ttf" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/Inter-400.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter-600.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter-300.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter-500.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
 
     <style>
       /* ===== Base & Variables ===== */
@@ -100,32 +128,32 @@
 
       /* ===== Self-hosted Inter (DSGVO compliant — no Google Fonts) ===== */
       @font-face {
-        font-family: 'Inter';
+        font-family: "Inter";
         font-style: normal;
         font-weight: 300;
         font-display: swap;
-        src: url('/fonts/Inter-300.ttf') format('truetype');
+        src: url("/fonts/Inter-300.ttf") format("truetype");
       }
       @font-face {
-        font-family: 'Inter';
+        font-family: "Inter";
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url('/fonts/Inter-400.ttf') format('truetype');
+        src: url("/fonts/Inter-400.ttf") format("truetype");
       }
       @font-face {
-        font-family: 'Inter';
+        font-family: "Inter";
         font-style: normal;
         font-weight: 500;
         font-display: swap;
-        src: url('/fonts/Inter-500.ttf') format('truetype');
+        src: url("/fonts/Inter-500.ttf") format("truetype");
       }
       @font-face {
-        font-family: 'Inter';
+        font-family: "Inter";
         font-style: normal;
         font-weight: 600;
         font-display: swap;
-        src: url('/fonts/Inter-600.ttf') format('truetype');
+        src: url("/fonts/Inter-600.ttf") format("truetype");
       }
 
       * {
@@ -541,21 +569,40 @@
         class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
       >
         <div class="text-sm text-slate-300" id="cookie-text">
-          <p class="leading-relaxed" data-i18n="cookie_text">
-            🍪 This website stores only your language preference in local storage.
-            No cookies, no tracking, no third-party services. All resources are
-            self-hosted — no data is sent to Google, CDNs, or analytics services.
-            By accepting, you consent to local storage for your language choice.
+          <p data-lang-content="en" class="leading-relaxed">
+            🍪 This website stores only your language preference in local
+            storage. No cookies, no tracking, no third-party services. All
+            resources are self-hosted — no data is sent to Google, CDNs, or
+            analytics services. By accepting, you consent to local storage for
+            your language choice.
           </p>
           <p
+            data-lang-content="ca"
             class="leading-relaxed"
-            data-i18n="cookie_text_ca"
             style="display: none"
           >
             🍪 Aquest lloc web emmagatzema només la vostra preferència d'idioma
             a l'emmagatzematge local. Sense galetes, sense seguiment, sense
-            serveis externs. Tots els recursos s'allotgen al nostre propi servidor
-            — no s'envien dades a Google, CDNs o serveis d'anàlisi.
+            serveis externs. Tots els recursos s'allotgen al nostre propi
+            servidor — no s'envien dades a Google, CDNs o serveis d'anàlisi.
+          </p>
+          <p
+            data-lang-content="de"
+            class="leading-relaxed"
+            style="display: none"
+          >
+            🍪 Diese Website speichert nur Ihre Sprachpräferenz im lokalen
+            Speicher. Keine Cookies, kein Tracking, keine Drittanbieter-Dienste.
+            Alle Ressourcen werden selbst gehostet — es werden keine Daten an
+            Google, CDNs oder Analyse-Dienste gesendet.
+          </p>
+          <p
+            data-lang-content="ja"
+            class="leading-relaxed"
+            style="display: none"
+          >
+            🍪
+            このウェブサイトは言語設定のみをローカルストレージに保存します。クッキー、トラッキング、サードパーティサービスは一切使用していません。すべてのリソースはセルフホストされています——Google、CDN、分析サービスにデータが送信されることはありません。
           </p>
           <a
             href="#"
@@ -610,36 +657,120 @@
         >
           &times;
         </button>
-        <h3 class="text-xl serif text-cyan-400 mb-4" data-i18n="privacy_title">
-          Privacy Policy | Política de privadesa
+        <h3 class="text-xl serif text-cyan-400 mb-4">
+          <span data-lang-content="en">Privacy Policy</span>
+          <span data-lang-content="ca" style="display: none"
+            >Política de privadesa</span
+          >
+          <span data-lang-content="de" style="display: none"
+            >Datenschutzerklärung</span
+          >
+          <span data-lang-content="ja" style="display: none"
+            >プライバシーポリシー</span
+          >
         </h3>
         <div class="text-sm text-slate-300 space-y-3">
-          <p data-i18n="privacy_p1">
+          <p data-lang-content="en">
             <strong>Data Controller:</strong> Paradox.cat. No personal data is
             collected, stored, or processed by this website.
           </p>
-          <p data-i18n="privacy_p2">
+          <p data-lang-content="ca" style="display: none">
+            <strong>Responsable de dades:</strong> Paradox.cat. No es recullen,
+            emmagatzemen ni processen dades personals en aquest lloc web.
+          </p>
+          <p data-lang-content="de" style="display: none">
+            <strong>Verantwortlicher:</strong> Paradox.cat. Diese Website
+            erhebt, speichert oder verarbeitet keine personenbezogenen Daten.
+          </p>
+          <p data-lang-content="ja" style="display: none">
+            <strong>データ管理者:</strong>
+            Paradox.cat。このウェブサイトは個人データを収集、保存、処理することはありません。
+          </p>
+          <p data-lang-content="en">
             <strong>Local Storage:</strong> We only store your language
             preference (EN or CA) in your browser's local storage after you
             explicitly consent. No cookies are used for tracking, analytics, or
             advertising.
           </p>
-          <p data-i18n="privacy_p3">
-            <strong>Third Parties:</strong> This website does not load any external
-            resources. Fonts, styles, and scripts are self-hosted on our own server
-            (Cloudflare). No data is transmitted to third parties for fonts, analytics,
-            or tracking purposes.
+          <p data-lang-content="ca" style="display: none">
+            <strong>Emmagatzematge local:</strong> Només emmagatzemem la vostra
+            preferència d'idioma (EN o CA) al navegador després del vostre
+            consentiment explícit. No s'utilitzen galetes per a seguiment,
+            anàlisi o publicitat.
           </p>
-          <p data-i18n="privacy_p4">
+          <p data-lang-content="de" style="display: none">
+            <strong>Lokaler Speicher:</strong> Wir speichern nur Ihre
+            Sprachpräferenz (EN oder CA) im lokalen Speicher Ihres Browsers,
+            nachdem Sie ausdrücklich zugestimmt haben. Es werden keine Cookies
+            für Tracking, Analysen oder Werbung verwendet.
+          </p>
+          <p data-lang-content="ja" style="display: none">
+            <strong>ローカルストレージ:</strong>
+            明示的な同意の後、言語設定（ENまたはCA）のみをブラウザのローカルストレージに保存します。トラッキング、分析、広告目的でのクッキーは一切使用していません。
+          </p>
+          <p data-lang-content="en">
+            <strong>Third Parties:</strong> This website does not load any
+            external resources. Fonts, styles, and scripts are self-hosted on
+            our own server (Cloudflare). No data is transmitted to third parties
+            for fonts, analytics, or tracking purposes.
+          </p>
+          <p data-lang-content="ca" style="display: none">
+            <strong>Tercers:</strong> Aquest lloc web no carrega cap recurs
+            extern. Les fonts, estils i scripts s'allotgen al nostre propi
+            servidor (Cloudflare). No es transmeten dades a tercers per a fonts,
+            anàlisi o seguiment.
+          </p>
+          <p data-lang-content="de" style="display: none">
+            <strong>Drittanbieter:</strong> Diese Website lädt keine externen
+            Ressourcen. Schriftarten, Styles und Skripte werden auf unserem
+            eigenen Server (Cloudflare) gehostet. Es werden keine Daten an
+            Dritte zu Schriftarten, Analysen oder Tracking-Zwecken übermittelt.
+          </p>
+          <p data-lang-content="ja" style="display: none">
+            <strong>第三者:</strong>
+            このウェブサイトは外部リソースを読み込みません。フォント、スタイル、スクリプトはすべて自社サーバー（Cloudflare）でホストされています。フォント、分析、トラッキング目的での第三者へのデータ送信は一切ありません。
+          </p>
+          <p data-lang-content="en">
             <strong>Your Rights (DSGVO):</strong> Under the EU General Data
-            Protection Regulation (DSGVO), you have the right to access, rectify,
-            or erase any personal data. Since we store no personal data, there is
-            nothing to access or erase. You may clear your local storage at any
-            time via your browser settings. This website is hosted on Cloudflare
-            (European privacy framework).
+            Protection Regulation (DSGVO), you have the right to access,
+            rectify, or erase any personal data. Since we store no personal
+            data, there is nothing to access or erase. You may clear your local
+            storage at any time via your browser settings. This website is
+            hosted on Cloudflare (European privacy framework).
           </p>
-          <p data-i18n="privacy_p5">
+          <p data-lang-content="ca" style="display: none">
+            <strong>Els vostres drets (DSGVO):</strong> Segons el Reglament
+            General de Protecció de Dades (DSGVO), teniu dret a accedir,
+            rectificar o suprimir les dades personals. Com que no emmagatzemem
+            dades personals, no hi ha res a accedir o suprimir. Podeu buidar
+            l'emmagatzematge local en qualsevol moment des de la configuració
+            del vostre navegador. Aquest lloc web s'allotja a Cloudflare (marc
+            de privadesa europeu).
+          </p>
+          <p data-lang-content="de" style="display: none">
+            <strong>Ihre Rechte (DSGVO):</strong> Gemäß der
+            Datenschutz-Grundverordnung haben Sie das Recht auf Auskunft,
+            Berichtigung oder Löschung personenbezogener Daten. Da wir keine
+            personenbezogenen Daten speichern, gibt es nichts auszukunften oder
+            zu löschen. Sie können Ihren lokalen Speicher jederzeit in Ihren
+            Browsereinstellungen leeren. Diese Website wird auf Cloudflare
+            gehostet (europäischer Datenschutzrahmen).
+          </p>
+          <p data-lang-content="ja" style="display: none">
+            <strong>あなたの権利（GDPR）:</strong>
+            EU一般データ保護規則に基づき、個人データのアクセス、訂正、消去を求める権利があります。当サイトは個人データを一切保存していないため、アクセスや消去の対象となるデータはありません。ブラウザの設定からいつでもローカルストレージをクリアできます。このウェブサイトはCloudflare（欧州プライバシーフレームワーク準拠）でホストされています。
+          </p>
+          <p data-lang-content="en">
             <strong>Contact / Kontakt:</strong> privacy@paradox.cat
+          </p>
+          <p data-lang-content="ca" style="display: none">
+            <strong>Contacte:</strong> privacy@paradox.cat
+          </p>
+          <p data-lang-content="de" style="display: none">
+            <strong>Kontakt:</strong> privacy@paradox.cat
+          </p>
+          <p data-lang-content="ja" style="display: none">
+            <strong>連絡先:</strong> privacy@paradox.cat
           </p>
         </div>
       </div>
@@ -687,6 +818,24 @@
               aria-label="Canvia al català"
             >
               CA
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="de"
+              role="radio"
+              aria-checked="false"
+              aria-label="Auf Deutsch umschalten"
+            >
+              DE
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="ja"
+              role="radio"
+              aria-checked="false"
+              aria-label="日本語に切り替え"
+            >
+              JA
             </button>
           </div>
 
@@ -745,12 +894,57 @@
               Fins que mires.
             </p>
           </div>
+          <!-- German -->
+          <div data-lang-content="de" style="display: none">
+            <h1
+              class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold serif leading-tight mb-6 text-glow-purple"
+            >
+              Die Katze ist
+              <span class="text-cyan-400">gleichzeitig lebendig</span> und
+              <span class="text-purple-400">tot</span>.
+            </h1>
+            <p
+              class="hero-sub text-xl sm:text-2xl md:text-3xl text-slate-400 serif italic mb-8"
+            >
+              Bis du hinsiehst.
+            </p>
+          </div>
+          <!-- Japanese -->
+          <div data-lang-content="ja" style="display: none">
+            <h1
+              class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold serif leading-tight mb-6 text-glow-purple"
+            >
+              猫は<span class="text-cyan-400">生きてもいて</span>、<span
+                class="text-purple-400"
+                >死んでもいる</span
+              >。
+            </h1>
+            <p
+              class="hero-sub text-xl sm:text-2xl md:text-3xl text-slate-400 serif italic mb-8"
+            >
+              あなたが見るまでは。
+            </p>
+          </div>
 
           <p
             class="text-slate-500 text-sm sm:text-base mb-12 max-w-2xl mx-auto leading-relaxed"
             data-i18n="hero_tagline"
           >
-            Schrödinger's Cat · Quantum Superposition · The Art of Uncertainty
+            <span data-lang-content="en"
+              >Schrödinger's Cat · Quantum Superposition · The Art of
+              Uncertainty</span
+            >
+            <span data-lang-content="ca" style="display: none"
+              >El Gat de Schrödinger · Superposició Quàntica · L'Art de la
+              Incertesa</span
+            >
+            <span data-lang-content="de" style="display: none"
+              >Schrödingers Katze · Quantenüberlagerung · Die Kunst der
+              Ungewissheit</span
+            >
+            <span data-lang-content="ja" style="display: none"
+              >シュレーディンガーの猫 · 量子重ね合わせ · 不確かさの美学</span
+            >
           </p>
 
           <a
@@ -761,6 +955,10 @@
             <span data-lang-content="ca" style="display: none"
               >Obre la Caixa</span
             >
+            <span data-lang-content="de" style="display: none"
+              >Öffne die Box</span
+            >
+            <span data-lang-content="ja" style="display: none">箱を開ける</span>
           </a>
         </div>
 
@@ -800,6 +998,18 @@
                   style="display: none"
                   class="text-glow-purple"
                   >La Paradoxa</span
+                >
+                <span
+                  data-lang-content="de"
+                  style="display: none"
+                  class="text-glow-purple"
+                  >Das Paradoxon</span
+                >
+                <span
+                  data-lang-content="ja"
+                  style="display: none"
+                  class="text-glow-purple"
+                  >パラドックス</span
                 >
               </h2>
               <!-- EN -->
@@ -843,6 +1053,46 @@
                   <span class="text-purple-400 not-italic font-semibold"
                     >ambdós</span
                   >.
+                </p>
+              </div>
+              <!-- DE -->
+              <div data-lang-content="de" style="display: none">
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  Im Jahr 1935 stellte sich Erwin Schrödinger eine Katze vor,
+                  die in einer Stahlkiste eingeschlossen war, mit einer winzigen
+                  Menge radioaktiver Substanz, einem Geigerzähler und einer
+                  Flasche Gift.
+                </p>
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  Wenn das radioaktive Atom zerfällt, löst der Geigerzähler den
+                  Zerfall der Flasche aus, und die Katze stirbt. Wenn es nicht
+                  zerfällt, lebt die Katze. Doch bis jemand
+                  <span class="text-cyan-400 font-medium">beobachtet</span> —
+                  bis die Kiste geöffnet wird — existieren beide Realitäten
+                  gleichzeitig.
+                </p>
+                <p class="text-slate-400 leading-relaxed italic text-lg">
+                  Die Katze ist weder lebendig noch tot. Sie ist
+                  <span class="text-purple-400 not-italic font-semibold"
+                    >beides</span
+                  >.
+                </p>
+              </div>
+              <!-- JA -->
+              <div data-lang-content="ja" style="display: none">
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  1935年、エルヴィン・シュレーディンガーは、微量の放射性物質、ガイガー計数管、そして毒薬の入った瓶とともに、鋼鉄の箱に閉じ込められた猫を想像しました。
+                </p>
+                <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+                  放射性原子が崩壊すれば、ガイガー計数管が瓶を壊し、猫は死にます。崩壊しなければ、猫は生きます。しかし誰かが
+                  <span class="text-cyan-400 font-medium">観測する</span
+                  >までは——箱が開かれるまでは——両方の現実が同時に存在しています。
+                </p>
+                <p class="text-slate-400 leading-relaxed italic text-lg">
+                  猫は生きても死んでもいません。
+                  <span class="text-purple-400 not-italic font-semibold"
+                    >両方</span
+                  >です。
                 </p>
               </div>
             </div>
@@ -1018,6 +1268,18 @@
                 class="text-glow-purple"
                 >L'Experiment</span
               >
+              <span
+                data-lang-content="de"
+                style="display: none"
+                class="text-glow-purple"
+                >Das Experiment</span
+              >
+              <span
+                data-lang-content="ja"
+                style="display: none"
+                class="text-glow-purple"
+                >実験</span
+              >
             </h2>
             <p class="text-slate-400 mb-2 text-lg" data-lang-content="en">
               The cat awaits your observation.
@@ -1028,6 +1290,20 @@
               style="display: none"
             >
               El gat espera la teva observació.
+            </p>
+            <p
+              class="text-slate-400 mb-2 text-lg"
+              data-lang-content="de"
+              style="display: none"
+            >
+              Die Katze wartet auf deine Beobachtung.
+            </p>
+            <p
+              class="text-slate-400 mb-2 text-lg"
+              data-lang-content="ja"
+              style="display: none"
+            >
+              猫はあなたの観測を待っています。
             </p>
           </div>
 
@@ -1056,6 +1332,20 @@
                 ψ = |viu⟩ + |mort⟩
               </div>
               <div
+                class="absolute top-3 left-3 z-10 text-[10px] font-mono text-cyan-400/40"
+                data-lang-content="de"
+                style="display: none"
+              >
+                ψ = |lebendig⟩ + |tot⟩
+              </div>
+              <div
+                class="absolute top-3 left-3 z-10 text-[10px] font-mono text-cyan-400/40"
+                data-lang-content="ja"
+                style="display: none"
+              >
+                ψ = |生⟩ + |死⟩
+              </div>
+              <div
                 class="absolute top-3 right-3 z-10 text-[10px] font-mono text-purple-400/40"
               >
                 √2
@@ -1073,6 +1363,12 @@
               <span data-lang-content="en">🔬 Observe</span>
               <span data-lang-content="ca" style="display: none"
                 >🔬 Observa</span
+              >
+              <span data-lang-content="de" style="display: none"
+                >🔬 Beobachten</span
+              >
+              <span data-lang-content="ja" style="display: none"
+                >🔬 観測する</span
               >
             </button>
           </div>
@@ -1099,6 +1395,10 @@
             <span data-lang-content="ca" style="display: none"
               >Observacions:
             </span>
+            <span data-lang-content="de" style="display: none"
+              >Beobachtungen:
+            </span>
+            <span data-lang-content="ja" style="display: none">観測回数: </span>
             <span id="attempt-count">0</span>
           </div>
         </div>
@@ -1118,6 +1418,18 @@
                 class="text-glow-purple"
                 >Paradoxes Cèlebres</span
               >
+              <span
+                data-lang-content="de"
+                style="display: none"
+                class="text-glow-purple"
+                >Berühmte Paradoxa</span
+              >
+              <span
+                data-lang-content="ja"
+                style="display: none"
+                class="text-glow-purple"
+                >有名なパラドックス</span
+              >
             </h2>
             <p class="text-slate-400" data-lang-content="en">
               Other thought experiments that challenge our perception of
@@ -1130,6 +1442,21 @@
             >
               Altres experiments mentals que desafien la nostra percepció de la
               realitat.
+            </p>
+            <p
+              class="text-slate-400"
+              data-lang-content="de"
+              style="display: none"
+            >
+              Weitere Gedankenexperimente, die unsere Wahrnehmung der Realität
+              herausfordern.
+            </p>
+            <p
+              class="text-slate-400"
+              data-lang-content="ja"
+              style="display: none"
+            >
+              現実認識に挑戦するその他の思考実験。
             </p>
           </div>
 
@@ -1144,6 +1471,12 @@
                 <span data-lang-content="en">Zeno's Arrow</span>
                 <span data-lang-content="ca" style="display: none"
                   >La Fletxa de Zenó</span
+                >
+                <span data-lang-content="de" style="display: none"
+                  >Zenons Pfeil</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >ゼノンの矢</span
                 >
               </h3>
               <p
@@ -1161,6 +1494,21 @@
                 Una fletxa en vol està immòbil a cada instant. Si el temps es
                 compon d'instants, com existeix el moviment?
               </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="de"
+                style="display: none"
+              >
+                Ein Pfeil im Flug ist in jedem Augenblick bewegungslos. Wenn
+                Zeit aus Augenblicken besteht, wie kann Bewegung existieren?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ja"
+                style="display: none"
+              >
+                飛んでいる矢は、あらゆる瞬間において静止しています。時間が瞬間から構成されているなら、どのようにして運動は存在するのでしょうか？
+              </p>
             </article>
 
             <!-- Card 2: Fermi -->
@@ -1173,6 +1521,12 @@
                 <span data-lang-content="en">Fermi's Paradox</span>
                 <span data-lang-content="ca" style="display: none"
                   >La Paradoxa de Fermi</span
+                >
+                <span data-lang-content="de" style="display: none"
+                  >Fermis Paradoxon</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >フェルミのパラドックス</span
                 >
               </h3>
               <p
@@ -1192,6 +1546,22 @@
                 extraterrestre és alta — però no veiem cap evidència. On són
                 tots?
               </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="de"
+                style="display: none"
+              >
+                Das Universum ist weit und uralt. Die Wahrscheinlichkeit für
+                außerirdisches Leben ist hoch — doch wir sehen keine Beweise. Wo
+                ist jeder?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ja"
+                style="display: none"
+              >
+                宇宙は広大で古い。地球外生命の確率は高い——しかし、何の証拠も見当たりません。みんなどこにいるのでしょう？
+              </p>
             </article>
 
             <!-- Card 3: Ship of Theseus -->
@@ -1204,6 +1574,12 @@
                 <span data-lang-content="en">Ship of Theseus</span>
                 <span data-lang-content="ca" style="display: none"
                   >El Vaixell de Teseu</span
+                >
+                <span data-lang-content="de" style="display: none"
+                  >Das Schiff des Theseus</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >テセウスの船</span
                 >
               </h3>
               <p
@@ -1221,6 +1597,22 @@
                 Si cada taula d'un vaixell es substitueix amb el temps, segueix
                 sent el mateix vaixell? En quin punt canvia la identitat?
               </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="de"
+                style="display: none"
+              >
+                Wenn jedes Planke eines Schiffes im Laufe der Zeit ersetzt wird,
+                ist es noch dasselbe Schiff? An welchem Punkt verändert sich die
+                Identität?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ja"
+                style="display: none"
+              >
+                船のすべての板が時間とともに入れ替えられたら、それは同じ船と言えるでしょうか？アイデンティティはどの時点で変わるのでしょう？
+              </p>
             </article>
 
             <!-- Card 4: Grandfather -->
@@ -1233,6 +1625,12 @@
                 <span data-lang-content="en">Grandfather Paradox</span>
                 <span data-lang-content="ca" style="display: none"
                   >La Paradoxa de l'Avi</span
+                >
+                <span data-lang-content="de" style="display: none"
+                  >Großvater-Paradoxon</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >祖父パラドックス</span
                 >
               </h3>
               <p
@@ -1249,6 +1647,22 @@
               >
                 Si viatges enrere en el temps i evites que el teu avi conegui la
                 teva àvia, com podries haver nascut mai?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="de"
+                style="display: none"
+              >
+                Wenn du in der Zeit zurückreist und verhinderst, dass dein
+                Großvater deine Großmutter trifft — wie könntest du dann jemals
+                geboren worden sein?
+              </p>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-lang-content="ja"
+                style="display: none"
+              >
+                タイムトラベルで過去に戻り、祖父が祖母と出会うのを妨げたら、あなたはどのようにして生まれることができるのでしょうか？
               </p>
             </article>
           </div>
@@ -1269,6 +1683,18 @@
                 class="text-glow-purple"
                 >Reflexions</span
               >
+              <span
+                data-lang-content="de"
+                style="display: none"
+                class="text-glow-purple"
+                >Betrachtungen</span
+              >
+              <span
+                data-lang-content="ja"
+                style="display: none"
+                class="text-glow-purple"
+                >考察</span
+              >
             </h2>
             <p class="text-slate-400 mb-12" data-lang-content="en">
               On uncertainty, observation, and the nature of reality.
@@ -1279,6 +1705,20 @@
               style="display: none"
             >
               Sobre la incertesa, l'observació i la naturalesa de la realitat.
+            </p>
+            <p
+              class="text-slate-400 mb-12"
+              data-lang-content="de"
+              style="display: none"
+            >
+              Über Ungewissheit, Beobachtung und die Natur der Realität.
+            </p>
+            <p
+              class="text-slate-400 mb-12"
+              data-lang-content="ja"
+              style="display: none"
+            >
+              不確かさ、観測、そして現実の本質について。
             </p>
           </div>
 
@@ -1298,6 +1738,14 @@
                 <span data-lang-content="ca" style="display: none"
                   >"L'univers no existeix 'allà fora' independent de nosaltres.
                   Som inevitablement part de la realitat que observem."</span
+                >
+                <span data-lang-content="de" style="display: none"
+                  >"Das Universum existiert nicht 'da draußen' unabhängig von
+                  uns. Wir sind unausweichlich ein Teil der Realität, die wir
+                  beobachten."</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >「宇宙は私たちとは独立して『どこか外側に』存在しているわけではない。私たちは観測する現実の不可避の一部なのだ。」</span
                 >
               </p>
               <p class="text-xs text-slate-600 mt-4">
@@ -1321,6 +1769,13 @@
                   >"El món quàntic no és estrany. L'estrany és que esperàvem que
                   es comportés com el nostre."</span
                 >
+                <span data-lang-content="de" style="display: none"
+                  >"Die Quantenwelt ist nicht seltsam. Seltsam ist, dass wir
+                  erwartet haben, sie würde sich wie unsere verhalten."</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >「量子の世界は奇妙ではない。奇妙なのは、私たちがそれが私たちの世界のように振る舞うことを期待していたことだ。」</span
+                >
               </p>
               <p class="text-xs text-slate-600 mt-4">— Carlo Rovelli</p>
             </div>
@@ -1340,6 +1795,14 @@
                 <span data-lang-content="ca" style="display: none"
                   >"Cada observació és una elecció. Cada elecció col·lapsa un
                   món de possibilitats en una."</span
+                >
+                <span data-lang-content="de" style="display: none"
+                  >"Jede Beobachtung ist eine Entscheidung. Jede Entscheidung
+                  lässt eine Welt voller Möglichkeiten in eine einzige
+                  kollabieren."</span
+                >
+                <span data-lang-content="ja" style="display: none"
+                  >「あらゆる観測は選択である。あらゆる選択は、可能性に満ちた世界を一つに収縮させる。」</span
                 >
               </p>
               <p class="text-xs text-slate-600 mt-4">— Paradox.cat</p>
@@ -1362,15 +1825,36 @@
         <div class="text-center sm:text-right">
           <p data-lang-content="en">
             This page exists in
-            <span class="text-cyan-400/60">English</span> and
-            <span class="text-purple-400/60">Català</span>. Both are equally
-            real until observed.
+            <span class="text-cyan-400/60">English</span>,
+            <span class="text-purple-400/60">Català</span>,
+            <span class="text-cyan-400/60">Deutsch</span> and
+            <span class="text-purple-400/60">日本語</span>. All are equally real
+            until observed.
           </p>
           <p data-lang-content="ca" style="display: none">
             Aquesta pàgina existeix en
-            <span class="text-cyan-400/60">Anglès</span> i
-            <span class="text-purple-400/60">Català</span>. Ambdues són
-            igualment reals fins que s'observen.
+            <span class="text-cyan-400/60">Anglès</span>,
+            <span class="text-purple-400/60">Català</span>,
+            <span class="text-cyan-400/60">Alemany</span> i
+            <span class="text-purple-400/60">Japonès</span>. Totes són igualment
+            reals fins que s'observen.
+          </p>
+          <p data-lang-content="de" style="display: none">
+            Diese Seite existiert auf
+            <span class="text-cyan-400/60">Englisch</span>,
+            <span class="text-purple-400/60">Katalanisch</span>,
+            <span class="text-cyan-400/60">Deutsch</span> und
+            <span class="text-purple-400/60">Japanisch</span>. Alle sind
+            gleichermaßen real, bis sie beobachtet werden.
+          </p>
+          <p data-lang-content="ja" style="display: none">
+            このページは<span class="text-cyan-400/60">英語</span>、<span
+              class="text-purple-400/60"
+              >カタルーニャ語</span
+            >、<span class="text-cyan-400/60">ドイツ語</span>、<span
+              class="text-purple-400/60"
+              >日本語</span
+            >で存在しています。すべて観測されるまでは等しく現実です。
           </p>
           <button
             onclick="showPrivacyModal()"
@@ -1405,12 +1889,31 @@
         const i18nElements = {};
 
         function setLanguage(lang) {
-          if (lang !== "en" && lang !== "ca") return;
+          if (lang !== "en" && lang !== "ca" && lang !== "de" && lang !== "ja")
+            return;
           currentLang = lang;
 
           // Update HTML lang attribute
           document.documentElement.lang = lang;
           document.documentElement.dataset.lang = lang;
+
+          // Update page title and meta description
+          var titles = {
+            en: "Paradox.cat — Schrödinger's Cat &amp; Quantum Uncertainty",
+            ca: "Paradox.cat — El Gat de Schrödinger i la Incertesa Quàntica",
+            de: "Paradox.cat — Schrödingers Katze &amp; Quantenungewissheit",
+            ja: "Paradox.cat — シュレーディンガーの猫と量子の不確かさ",
+          };
+          var descriptions = {
+            en: "Explore the paradox of Schrödinger's Cat — the cat is both alive and dead until observed. An interactive multilingual journey into quantum uncertainty.",
+            ca: "Explora la paradoxa del Gat de Schrödinger — el gat és viu i mort alhora fins que mires. Un viatge interactiu multilingüe cap a la incertesa quàntica.",
+            de: "Erkunden Sie das Paradoxon von Schrödingers Katze — die Katze ist gleichzeitig lebendig und tot, bis man hinsieht. Eine interaktive mehrsprachige Reise in die Quantenungewissheit.",
+            ja: "シュレーディンガーの猫のパラドックスを探求する——観測されるまで猫は生きても死んでもいる。量子の不確かさへのインタラクティブな多言語の旅。",
+          };
+          document.title = titles[lang] || titles.en;
+          var metaDesc = document.querySelector('meta[name="description"]');
+          if (metaDesc)
+            metaDesc.content = descriptions[lang] || descriptions.en;
 
           // Show/hide data-lang-content blocks
           Object.keys(langContentMap).forEach((l) => {
@@ -1510,7 +2013,13 @@
               return null;
             }
           })();
-          if (savedLang && (savedLang === "en" || savedLang === "ca")) {
+          if (
+            savedLang &&
+            (savedLang === "en" ||
+              savedLang === "ca" ||
+              savedLang === "de" ||
+              savedLang === "ja")
+          ) {
             setLanguage(savedLang);
           }
           // Banner stays hidden
@@ -1735,6 +2244,14 @@
             text: 'El gat és <span class="text-cyan-400">viu</span>.',
             sub: "Avui, l'univers ha escollit la vida.",
           },
+          de: {
+            text: 'Die Katze <span class="text-cyan-400">lebt</span>.',
+            sub: "Heute hat das Universum das Leben gewählt.",
+          },
+          ja: {
+            text: '猫は<span class="text-cyan-400">生きています</span>。',
+            sub: "今日、宇宙は生命を選びました。",
+          },
         };
         const deadMessages = {
           en: {
@@ -1744,6 +2261,14 @@
           ca: {
             text: 'El gat és <span class="text-purple-400">mort</span>.',
             sub: "La funció d'ona ha col·lapsat.",
+          },
+          de: {
+            text: 'Die Katze ist <span class="text-purple-400">tot</span>.',
+            sub: "Die Wellenfunktion ist kollabiert.",
+          },
+          ja: {
+            text: '猫は<span class="text-purple-400">死んでいます</span>。',
+            sub: "波動関数が収縮しました。",
           },
         };
 
@@ -1834,14 +2359,18 @@
         // If ?lang=ca in URL, switch to Catalan
         const urlParams = new URLSearchParams(window.location.search);
         const urlLang = urlParams.get("lang");
-        if (urlLang === "ca") {
-          setLanguage("ca");
+        if (urlLang === "ca" || urlLang === "de" || urlLang === "ja") {
+          setLanguage(urlLang);
         } else if (!existingConsent) {
           // First visit: detect browser language
           const browserLang =
             navigator.language || navigator.userLanguage || "";
           if (browserLang.startsWith("ca") || browserLang === "ca-ES") {
             setLanguage("ca");
+          } else if (browserLang.startsWith("de")) {
+            setLanguage("de");
+          } else if (browserLang.startsWith("ja")) {
+            setLanguage("ja");
           }
         }
       })();

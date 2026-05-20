@@ -5,6 +5,8 @@
     <loc>https://paradox.cat/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://paradox.cat/"/>
     <xhtml:link rel="alternate" hreflang="ca" href="https://paradox.cat/?lang=ca"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://paradox.cat/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://paradox.cat/?lang=ja"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://paradox.cat/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>

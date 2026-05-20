@@ -1,6 +1,6 @@
 #:schema https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json
 name = "paradox-website"
-pages_build_output_dir = "/"
+pages_build_output_dir = "."
 
 # Compatibility flags for modern features
 compatibility_date = "2025-05-19"

@@ -335,6 +335,9 @@
   .box-border {
     box-sizing: border-box;
   }
+  .contents {
+    display: contents;
+  }
   .flex {
     display: flex;
   }
@@ -444,6 +447,9 @@
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
+  }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
   }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
@@ -780,11 +786,6 @@
   .sm\:p-8 {
     @media (width >= 40rem) {
       padding: calc(var(--spacing) * 8);
-    }
-  }
-  .sm\:px-5 {
-    @media (width >= 40rem) {
-      padding-inline: calc(var(--spacing) * 5);
     }
   }
   .sm\:px-8 {

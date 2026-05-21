@@ -335,6 +335,9 @@
   .box-border {
     box-sizing: border-box;
   }
+  .block {
+    display: block;
+  }
   .contents {
     display: contents;
   }
@@ -690,6 +693,9 @@
   .not-italic {
     font-style: normal;
   }
+  .no-underline {
+    text-decoration-line: none;
+  }
   .underline {
     text-decoration-line: underline;
   }
@@ -755,6 +761,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white);
+      }
+    }
+  }
+  .hover\:no-underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: none;
       }
     }
   }
